@@ -1,5 +1,6 @@
 package com.example.intent
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var contraseña: EditText
     lateinit var iniciarSesion: Button
     lateinit var registro: Button
+    lateinit var mapaIntent: Intent
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,9 +37,11 @@ class MainActivity : AppCompatActivity() {
         contraseña = findViewById(R.id.contraseña)
         iniciarSesion = findViewById(R.id.iniciarSesion)
         registro = findViewById(R.id.registro)
+        mapaIntent = Intent(this, MapsActivity::class.java)
+
 
         //Instanciamos en objeto auth que nos permitira crear un usuario e iniciar sesion
-
+        auth = Firebase.auth
 
         /*Hacemos un listener de los botones para que cuando se pulsen llamen a la función createAccount e sgnIn que
         Permitirá  crear una cuenta o inciar sesión cuando cuando se pulsen los botones*/
@@ -47,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         iniciarSesion.setOnClickListener {
             signIn(email.text.toString(), contraseña.text.toString())
         }
+
 
     }
 
@@ -110,6 +115,7 @@ class MainActivity : AppCompatActivity() {
                     val user = auth.currentUser
                     //Se llama al método que actualizará el layout cuando se haya iniciado sesión y se le pasa el usuario
                     updateUI(user)
+                    startActivity(mapaIntent)
                 } else {
                     //  Si el inicio de sesión falla, muestra un mensaje al usuario
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -127,4 +133,5 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "EmailPassword"
     }
+
 }
