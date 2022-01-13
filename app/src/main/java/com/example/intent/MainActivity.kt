@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         registro = findViewById(R.id.registro)
 
         //Instanciamos en objeto auth que nos permitira crear un usuario e iniciar sesion
-        auth = Firebase.auth
+
 
         /*Hacemos un listener de los botones para que cuando se pulsen llamen a la función createAccount e sgnIn que
         Permitirá  crear una cuenta o inciar sesión cuando cuando se pulsen los botones*/
