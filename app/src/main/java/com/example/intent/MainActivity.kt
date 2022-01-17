@@ -11,6 +11,8 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var iniciarSesion: Button
     lateinit var registro: Button
     lateinit var mapaIntent: Intent
+    lateinit var bRealTime: Button
+    private lateinit var database: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +42,12 @@ class MainActivity : AppCompatActivity() {
         iniciarSesion = findViewById(R.id.iniciarSesion)
         registro = findViewById(R.id.registro)
         mapaIntent = Intent(this, MapsActivity::class.java)
+        database = Firebase.database.getReference("users")
 
+        val realTime: Button = findViewById(R.id.bRealTime)
+        bRealTime.setOnClickListener {
+            writeNewData( "Kiskos", 8.061, 4.542)
+        }
 
         //Instanciamos en objeto auth que nos permitira crear un usuario e iniciar sesion
         auth = Firebase.auth
@@ -130,6 +139,9 @@ class MainActivity : AppCompatActivity() {
      Un companion object es un objeto que es común a todas las instancias de esa clase. Vendría a ser similar a los campos estáticos en Java.
      En este caso creamos el objeto TAG al que llamaremos en los Log de control para saber si se ha iniciado sesión correctamente
      */
+    fun writeNewData(nombre:String,latitud:Double,longitud:Double) {
+        Log.d(TAG, "Escribiendo Datos")
+    }
     companion object {
         private const val TAG = "EmailPassword"
     }
