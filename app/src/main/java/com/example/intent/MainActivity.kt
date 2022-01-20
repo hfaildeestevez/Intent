@@ -42,12 +42,15 @@ class MainActivity : AppCompatActivity() {
         iniciarSesion = findViewById(R.id.iniciarSesion)
         registro = findViewById(R.id.registro)
         mapaIntent = Intent(this, MapsActivity::class.java)
-        database = Firebase.database.getReference("users")
-
-        val realTime: Button = findViewById(R.id.bRealTime)
+        Log.i("Previo", "antes de declarar database")
+        database = Firebase.database("https://intentasion-default-rtdb.europe-west1.firebasedatabase.app/").reference
+        Log.i("Previo","Database declarado")
+        val bRealTime: Button = findViewById(R.id.bRealTime)
         bRealTime.setOnClickListener {
             writeNewData( "Kiskos", 8.061, 4.542)
         }
+
+
 
         //Instanciamos en objeto auth que nos permitira crear un usuario e iniciar sesion
         auth = Firebase.auth
@@ -139,8 +142,10 @@ class MainActivity : AppCompatActivity() {
      Un companion object es un objeto que es común a todas las instancias de esa clase. Vendría a ser similar a los campos estáticos en Java.
      En este caso creamos el objeto TAG al que llamaremos en los Log de control para saber si se ha iniciado sesión correctamente
      */
-    fun writeNewData(nombre:String,latitud:Double,longitud:Double) {
+    fun writeNewData(Nombre:String,Latitud:Double,Longitud:Double) {
         Log.d(TAG, "Escribiendo Datos")
+        val Profesional=Profesionales(Nombre, Latitud, Longitud)
+        database.child("users/1102").setValue(Profesional)
     }
     companion object {
         private const val TAG = "EmailPassword"
