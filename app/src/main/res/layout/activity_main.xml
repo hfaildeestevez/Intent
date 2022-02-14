@@ -10,9 +10,9 @@
         android:id="@+id/iniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="144dp"
-        android:text="Sign In"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="100dp"
+        android:text="Iniciar sesión"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contraseña" />
 
@@ -49,24 +49,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:text="No tienes cuenta? A qué esperas?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iniciarSesion" />
+
     <Button
         android:id="@+id/registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="52dp"
-        android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contraseña" />
-
-    <Button
-        android:id="@+id/bRealTime"
-        android:layout_width="140dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="228dp"
-        android:text="RealTime"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="24dp"
+        android:text="REGISTRATE"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contraseña" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
