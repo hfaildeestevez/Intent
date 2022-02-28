@@ -33,17 +33,21 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_width="171dp"
+        android:layout_height="273dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="148dp"
         android:src="@drawable/agarimo"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="104dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="AGARIMO"
@@ -51,8 +55,8 @@
         android:textColor="#703FCFA2"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="35dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="38dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
