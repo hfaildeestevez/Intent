@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.2" />
+        <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/activity_cliente.xml" value="0.13858695652173914" />
         <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/activity_pantalla_inicial.xml" value="0.13858695652173914" />
         <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/activity_profesionales.xml" value="0.12943262411347517" />
+        <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/fragment_dashboard.xml" value="0.13858695652173914" />
+        <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/fragment_home.xml" value="0.13858695652173914" />
+        <entry key="..\:/Android Estudio/Intent/app/src/main/res/layout/fragment_notifications.xml" value="0.13858695652173914" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
       </map>
     </option>

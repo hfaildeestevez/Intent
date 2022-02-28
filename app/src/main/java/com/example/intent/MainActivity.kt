@@ -1,5 +1,6 @@
 package com.example.intent
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.intent.ui.home.MapsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -41,12 +43,11 @@ class MainActivity : AppCompatActivity() {
         contraseña = findViewById(R.id.contraseña)
         iniciarSesion = findViewById(R.id.iniciarSesion)
         registro = findViewById(R.id.registro)
-        mapaIntent = Intent(this, MapsActivity::class.java)
+       // mapaIntent = Intent(this, MapsFragment::class.java)
         Log.i("Previo", "antes de declarar database")
-        database = Firebase.database("https://intentasion-default-rtdb.europe-west1.firebasedatabase.app/").reference
-        Log.i("Previo","Database declarado")
-
-
+        database =
+            Firebase.database("https://intentasion-default-rtdb.europe-west1.firebasedatabase.app/").reference
+        Log.i("Previo", "Database declarado")
 
 
         //Instanciamos en objeto auth que nos permitira crear un usuario e iniciar sesion
@@ -59,6 +60,8 @@ class MainActivity : AppCompatActivity() {
         }
         iniciarSesion.setOnClickListener {
             signIn(email.text.toString(), contraseña.text.toString())
+
+
         }
 
 
@@ -124,24 +127,44 @@ class MainActivity : AppCompatActivity() {
                     val user = auth.currentUser
                     //Se llama al método que actualizará el layout cuando se haya iniciado sesión y se le pasa el usuario
                     updateUI(user)
-                    startActivity(mapaIntent)
-                } else {
-                    //  Si el inicio de sesión falla, muestra un mensaje al usuario
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Log.d("estado", "No se puedo iniciar sesion")
+
+
+                    if (intent.getStringExtra(EXTRA_MESSAGE) == "Profesional") {
+                        intent = Intent(this, Profesionales::class.java).apply {
+                            /*
+                             *Con finish() impedimos que retorne al anterior activity donde tenemos
+                             *la autenticicación y no queremos que de recuperado esos datos,
+                             *obligando a que se logue de nuevo
+                             */
+                            finish()
+                        }
+
+                    } else if (intent.getStringExtra(EXTRA_MESSAGE) == "Cliente") {
+                        intent = Intent(this, bottom_navigation::class.java).apply {
+                            /*
+                             *Con finish() impedimos que retorne al anterior activity donde tenemos
+                             *la autenticicación y no queremos que de recuperado esos datos,
+                             *obligando a que se logue de nuevo
+                             */
+                            finish()
+                        }
+                        startActivity(intent)
+                    } else {
+                        //  Si el inicio de sesión falla, muestra un mensaje al usuario
+                        Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT)
+                            .show()
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        Log.d("estado", "No se puedo iniciar sesion")
+                    }
                 }
+
             }
 
-    }
-
-    /*
+        /*
      Un companion object es un objeto que es común a todas las instancias de esa clase. Vendría a ser similar a los campos estáticos en Java.
      En este caso creamos el objeto TAG al que llamaremos en los Log de control para saber si se ha iniciado sesión correctamente
      */
 
-    companion object {
-        private const val TAG = "EmailPassword"
-    }
 
+    }
 }
